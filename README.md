@@ -35,6 +35,8 @@ A Container Security Scanner (e.g., Trivy, Clair) inspects the resulting images 
 Once they pass all checks, the CI server pushes the signed, scanned images to your Container Registry (e.g., Amazon ECR, Docker Hub).
 
 # 2. Container Registry → Kubernetes Cluster
+![image](https://github.com/user-attachments/assets/eef38efa-ed84-4e78-8a7e-c82601a09ce7)
+
 ## Kubernetes Pulls Images
 
 Inside your Kubernetes Cluster (presumably running in EKS), your Deployment objects reference images in the registry. When you apply your Deployment manifests, each Pod pulls its container image from the registry.
@@ -67,12 +69,16 @@ User Browser → Load Balancer → Frontend/API
 End users open their browser and hit your DNS name.
 
 The request goes to the Load Balancer, which routes HTTP(S) traffic to the Frontend Service in the cluster (and can also route API calls to the API Service).
+![image](https://github.com/user-attachments/assets/11ca56c6-8b60-4520-8893-bd78418e989d)
+
 
 # Monitoring with Prometheus & Grafana
 
 Your cluster is instrumented with Prometheus, scraping metrics from Kubernetes nodes, Pods, and your application endpoints (e.g., /metrics).
 
 Grafana sits on top of Prometheus, giving you dashboards and alert rules—so you can watch CPU/memory, request latency, error rates, and fire alerts when thresholds are breached.
+![image](https://github.com/user-attachments/assets/1d1ad790-1f78-4e9a-acb0-cdbad457d38a)
+
 
 # Putting It All Together
 Code changes flow into your CI/CD pipeline, get tested (static, dependency, container), and push artifacts to a registry.
